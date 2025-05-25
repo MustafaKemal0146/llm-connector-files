@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useAuth } from './AuthProvider';
 
 export default function Navbar() {
+  const { signOut } = useAuth();
+
   return (
     <nav className="bg-gray-800 border-b border-gray-700">
       <div className="mx-auto px-4">
@@ -14,7 +17,10 @@ export default function Navbar() {
             <Link to="/settings" className="text-gray-300 hover:text-white">
               Ayarlar
             </Link>
-            <button className="text-gray-300 hover:text-white">
+            <button 
+              onClick={() => signOut()}
+              className="text-gray-300 hover:text-white"
+            >
               Çıkış Yap
             </button>
           </div>
